@@ -10,8 +10,9 @@ export default [{
       { title: 'Red', duration: '268.45', audioSrc: '/assets/music/red.mp3' },
       { title: 'Pink', duration: '153.14', audioSrc: '/assets/music/pink.mp3' },
       { title: 'Magenta', duration: '374.22', audioSrc: '/assets/music/magenta.mp3' }
-  ]
-}, {
+    ]
+    
+  }, {
     title: 'The Telephone',
     artist: 'Guglielmo Marconi',
     releaseInfo: '1909 EM',
