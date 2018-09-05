@@ -6,9 +6,13 @@ class Library extends Component {
   constructor(props) {
     super(props);
 
+<<<<<<< HEAD
     this.state = {
       albums: albumData
      };
+=======
+    this.state = { albums: albumData };
+>>>>>>> 5312272b7079ca5d219beb7dea68c3d3b01530f6
   }
   render() {
     return (

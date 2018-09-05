@@ -20,7 +20,11 @@ export default [{
 
       { title: 'Magenta', duration: '374.22', audioSrc: '/assets/music/magenta.mp3' }
     ]
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 5312272b7079ca5d219beb7dea68c3d3b01530f6
   }, {
     title: 'The Telephone',
 
