@@ -5,7 +5,7 @@ import PlayerBar from './PlayerBar';
 
 class Album extends Component {
   constructor(props) {
-   super(props);
+   super(props)
    const album = albumData.find( album => {
       return album.slug === this.props.match.params.slug
     });
@@ -41,23 +41,40 @@ class Album extends Component {
        this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
      }
 
+     formatTime(seconds, hasPlaceHolder) {
+        let minutes;
+        let newSeconds;
+        hasPlaceHolder = hasPlaceHolder || false;
 
-      play() {
+        if ((this.state.isPlaying || this.state.currentTime > 0 || !hasPlaceHolder) && !isNaN(seconds)) {
+            minutes = Math.floor(seconds / 60);
+            newSeconds = Math.floor(seconds - (Math.floor(seconds / 60) * 60));
+            newSeconds = newSeconds < 10 ? '0' + newSeconds : newSeconds;
+        }else {
+            minutes = '-';
+            newSeconds = '--';
+        }
+
+        return `${minutes}:${newSeconds}`;
+    }
+
+
+    play() {
         this.audioElement.play();
         this.setState({ isPlaying: true });
       }
 
-pause() {
+    pause() {
     this.audioElement.pause();
     this.setState({ isPlaying: false });
   }
 
-  setSong(song) {
+    setSong(song) {
     this.audioElement.src = song.audioSrc;
     this.setState({ currentSong: song });
   }
 
-  handleSongClick(song) {
+    handleSongClick(song) {
       const isSameSong = this.state.currentSong === song;
       if (this.state.isPlaying && isSameSong) {
         this.pause();
@@ -93,6 +110,12 @@ pause() {
    this.setState({ currentTime: newTime });
  }
 
+ handleVolumeChange(e) {
+        const newVolume = e.target.value;
+        this.audioElement.volume = newVolume;
+        this.setState({ currentVolume: newVolume });
+    }
+
    render() {
      return (
        <section className="album">
@@ -121,7 +144,7 @@ pause() {
                    </button>
                 </td>
                <td className="song-title">{song.title}</td>
-               <td className="song-duration">{song.duration}</td>
+               <td className="song-duration">{this.formatTime(song.duration)}</td>
               </tr>
             )
           }
@@ -132,10 +155,14 @@ pause() {
           currentSong={this.state.currentSong}
           currentTime={this.audioElement.currentTime}
           duration={this.audioElement.duration}
+          currentVolume={this.audioElement.volume}
+                    formattedTime={this.formatTime(this.audioElement.currentTime, true)}
+                    formattedTimeLeft={this.formatTime(this.audioElement.duration - Math.floor(this.audioElement.currentTime), true)}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
           handleTimeChange={(e) => this.handleTimeChange(e)}
+          handleVolumeChange={(e) => this.handleVolumeChange(e)}
         />
       </section>
     );
