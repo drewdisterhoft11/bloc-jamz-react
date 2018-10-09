@@ -1,0 +1,33 @@
+.player-bar {
+  width: 100%;
+  margin: 3em auto;
+  text-align: center;
+}
+
+#volume-control {
+  width: 20%;
+  margin-bottom: 0;
+}
+
+#volume-control span {
+  width: 30%;
+  display: inline;
+}
+
+#butttons {
+  margin: auto;
+  padding: 0 5px;
+}
+
+#time-control {
+  width: 75%;
+  margin: auto;
+  display: inline;
+}
+
+.current-time {
+  text-align: left;
+  display: inline;
+  font-size: 1;
+  color: #6610f2;
+}

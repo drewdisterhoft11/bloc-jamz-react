@@ -1,0 +1,11 @@
+.hero-title {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.point-description {
+  font-size: 1.5em;
+  font-family: sans-serif;
+}
